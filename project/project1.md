@@ -29,8 +29,10 @@ This allows for easily communication between the instance and my local machine.
 After setting up ec2 instance, the dashboard was similar to the figure below:
  ![instance](./images/instance.png).
 
+ The next step before installing LAMP is to ensure the 
 
-The Next step is to install Apache
+### APACHE INSTALLATION
+To install apache, the ubuntu packages must be up to date, to ensure this, this code was wr
 
  
 
