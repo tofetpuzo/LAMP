@@ -37,18 +37,18 @@ After setting up ec2 instance, the dashboard was similar to the figure below:
 To install apache, the ubuntu packages must be up to date using the code below usually done inside the terminal.
 
 
-`~$: sudo apt install apache2`
+`:~$ sudo apt install apache2`
 
 
 To check APACHE status from the local machine terminal. use this code:
 
-`~$: sudo systemctl status apache2 `
+`:~$ sudo systemctl status apache2 `
 Figure below shows apache2 is active
 ![status](./images/status.png)
 
 To access the website remotely and find the ip address of the server,  I used the code
 
-` ~$: curl -s http://169.254.169.254/latest/meta-data/public-ipv4`
+`:~$ curl -s http://169.254.169.254/latest/meta-data/public-ipv4`
 
 The ip address was used to launch the website. 
 Screenshot below
@@ -60,12 +60,12 @@ mySQL is called a relational database simply because the tabular data are struct
 
 To install mySQL, i used this command on the terminal.
 
-`~$: sudo apt install mysql-server`
+`:~$ sudo apt install mysql-server`
 
 To secure the mySQL, i had to run a security script; which is usually pre-installed with mySQL. This is done to remove some insecure default settings. The script will ensure that insecure access to the Database is prevented. 
 Thee following command was passed into the interactive terminal.
 
-`~$: sudo mysql_secure_installation`
+`:~$ sudo mysql_secure_installation`
 
 Secure the mysQL
 ![secure](./images/secure.png)
@@ -74,11 +74,27 @@ Check if the mySQL is correctly installed.
 
 To navigated into the mySQL databases, I used this command:
 
-`~$: sudo mysql`
+`:~$ sudo mysql`
 ![apache](./images/runsql.png)
 
+### PHP INSTALLATION
+To install PHP which serves has the commponent that will process code to display dynamic content to the end user. I installed the php-mysql module to establish a connection between PHP and mySQL-based databases. There is a need to ensure that APACHE can handle PHP file, this is done using libapache2-mod-php module.
 
+It is actually possible to install the three packages using a single line of code.
+`:~$ sudo apt install php libapache2-mod-php php-mysql`
 
+To confirm if the php is installed, i used this code
+`:~$: php -v`
 
+After the installation of LAMP, To provide a virutal host for your website using apache server. The first step is to create a directory to serve documents. By default Apache has a default directory and the setup was not changed. 
 
+I create a directory using the `mkdir` command as follows:
 
+`:$ sudo mkdir /var/www/projectlamp`
+I claimed ownership of this directory by running this command:
+
+`sudo chown -R $USER:$USER /var/www/projectlamp`
+
+Next, I create an open confguration file in Apache's sites-available directory. 
+
+`sudo vi /etc/apache2/sites-available/projectlamp.conf`
