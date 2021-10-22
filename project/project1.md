@@ -11,14 +11,23 @@ The process starts off when the Apache web server recieves the requests from the
 
 Where does the mySQL come in; this is the database which provides the user all the necessary information about the items they intend to purchase.                               
 
-First Step
+Installation
 ---
-
-To implement LAMP, you would have to create an AWS account. Use this link:
+The recommended way to implement LAMP, is first to create an AWS account. Using this link:
  [AWS_ACCOUNT](https://signin.aws.amazon.com/)
+
+ The create page looks like this.
+
+ ![aws](./images/aws.png) 
+
+The Next step is to install Apache
+
+ 
+
+
  
 After signing into the link.
-Create an instance of the 
+Create an instance of the EC2 
 
 
 
