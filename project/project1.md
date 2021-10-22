@@ -4,10 +4,10 @@
 What is LAMP?
 LAMP stands for L : Linux, A: Apache, M: mySQL, P: PHP.
 
-These aforementiomed components or software allow to build and deliver high performance web applications.                           How it works?
+These aforementiomed components or software allow to build and deliver high performance web applications. How it works?
 The LAMP stack shows how each element depends on each. Let us take an example, suppose a user sends a request to order an item from an-ecommerce store. 
 
-The process starts off when the Apache web server recieves the requests from the web pages from a typical use's browser. This request is so for a PHP file, The Apache server then passes the information to PHP, which then loads the file and executes the code contained the file. 
+The process starts off when the Apache web server recieves the requests from the web pages from a typical use's browser. This request is for a PHP file, The Apache server then passes the information to PHP, which then loads the file and executes the code contained the file. 
 
 Where does the mySQL come in; this is the database which provides the user all the necessary information about the items they intend to purchase.                               
 
@@ -29,7 +29,7 @@ This allows for easily communication between the instance and my local machine.
 After setting up ec2 instance, the dashboard was similar to the figure below:
  ![instance](./images/instance.png)
 
- The next step before installing LAMP is to ensure my local machine and remote server communicate successfully, I had to download the keypair usually attached to the instance of ec2, This allows for easy communication between my local machine and the remote server. This was done using the terminal, the code required is usually in the SSH Client section in the dashboard. 
+ The next step before installing LAMP is to ensure my local machine and the remote server communicate successfully, I had to download the keypair usually attached to the instance of ec2, This allows for easy communication between my local machine and the remote server. This was done using the terminal, the code required is usually in the SSH Client section in the dashboard. 
 
 
 
@@ -58,9 +58,24 @@ Screenshot below
 The installation of mysql database makes storing and retrieving data seemsless. 
 mySQL is called a relational database simply because the tabular data are structured and have a relationship with each column or row in the data.
 
+To install mySQL, i used this command on the terminal.
 
+`~$: sudo apt install mysql-server`
 
+To secure the mySQL, i had to run a security script; which is usually pre-installed with mySQL. This is done to remove some insecure default settings. The script will ensure that insecure access to the Database is prevented. 
+Thee following command was passed into the interactive terminal.
 
+`~$: sudo mysql_secure_installation`
+
+Secure the mysQL
+![secure](./images/secure.png)
+
+Check if the mySQL is correctly installed.
+
+To navigated into the mySQL databases, I used this command:
+
+`~$: sudo mysql`
+![apache](./images/runsql.png)
 
 
 
