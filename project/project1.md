@@ -20,6 +20,16 @@ The recommended way to implement LAMP, is first to create an AWS account. Using 
 
  ![aws](./images/aws.png) 
 
+ After signing up, I logged into the aws account as a root user, this allowed me to have access into the aws management console, where I searched for EC2: Elastic cloud compute from the search bar, shown below.
+ ![ec2](./images/ec2.png).
+
+Create an EC2 instance of t2.micro, requires selecting a software such as Ubuntu 20.04LTS. 
+
+This allows for easily communication between the instance and my local machine.  
+After setting up ec2 instance, the dashboard was similar to the figure below:
+ ![instance](./images/instance.png).
+
+
 The Next step is to install Apache
 
  
