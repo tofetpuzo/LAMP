@@ -29,23 +29,20 @@ This allows for easily communication between the instance and my local machine.
 After setting up ec2 instance, the dashboard was similar to the figure below:
  ![instance](./images/instance.png).
 
- The next step before installing LAMP is to ensure my local machine and remote server communicates, I had to download the keypair usually attached to the instance of ec2, This allows for easy communication between my local machine and the remote server. 
+ The next step before installing LAMP is to ensure my local machine and remote server communicate successfully, I had to download the keypair usually attached to the instance of ec2, This allows for easy communication between my local machine and the remote server. This was done using the terminal, the code required is usually in the SSH Client section in the dashboard. 
+
+
 
 ### APACHE INSTALLATION
-To install apache, the ubuntu packages must be up to date, to ensure this, this code was wr
-
- 
+To install apache, the ubuntu packages must be up to date using the code below usually done inside the terminal.
 
 
- 
-After signing into the link.
-Create an instance of the EC2 
+`~$: sudo apt install apache2`
 
 
+To check APACHE status from the local machine terminal. use this code:
 
-check APACHE status
-
-`sudo `
+`~$: sudo systemctl status apache2 `
 
 
 
