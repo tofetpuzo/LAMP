@@ -44,7 +44,7 @@ To check APACHE status from the local machine terminal. use this code:
 
 `:~$ sudo systemctl status apache2 `
 Figure below shows apache2 is active
-![status](./images/status.png)
+![status](./images/status.jpg)
 
 To access the website remotely and find the ip address of the server,  I used the code
 
@@ -68,14 +68,14 @@ Thee following command was passed into the interactive terminal.
 `:~$ sudo mysql_secure_installation`
 
 Secure the mysQL
-![secure](./images/secure.png)
+![secure](./images/secure.jpg)
 
 Check if the mySQL is correctly installed.
 
 To navigated into the mySQL databases, I used this command:
 
 `:~$ sudo mysql`
-![apache](./images/runsql.png)
+![apache](./images/runsql.jpg)
 
 ### PHP INSTALLATION
 To install PHP which serves has the commponent that will process code to display dynamic content to the end user. I installed the php-mysql module to establish a connection between PHP and mySQL-based databases. There is a need to ensure that APACHE can handle PHP file, this is done using libapache2-mod-php module.
@@ -98,3 +98,5 @@ I claimed ownership of this directory by running this command:
 Next, I create an open confguration file in Apache's sites-available directory. 
 
 `sudo vi /etc/apache2/sites-available/projectlamp.conf`
+
+![file](./images/file.jpg)
