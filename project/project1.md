@@ -31,28 +31,30 @@ After setting up ec2 instance, the dashboard was similar to the figure below:
 
  The next step before installing LAMP is to ensure my local machine and the remote server communicate successfully, I had to download the keypair usually attached to the instance of ec2, This allows for easy communication between my local machine and the remote server. This was done using the terminal, the code required is usually in the SSH Client section in the aws management console dashboard. 
  
- During configuration, I noticed that the SSH Client link used to connect the server to my local machine did not work, this was because the default security group earlier created was set to custom, which does not allow a connection between my local machine and ec2 instance created.
+ During configuration, I noticed that the SSH Client link used to connect the server to my local machine did not work, this was because the default security group earlier created was set to custom, which does not allow connection to established between my local machine and ec2 instance created.
  I had to change the inbound rules from the security section in my aws management console 
 
 ![inbound](./images/inbound.png)
 
-After the successful configuration of aww ec2 instance with my local terminal, I proceed to installing apache. 
+After the successful configuration of aws ec2 instance with my local terminal, I proceed to installing apache. 
 ### APACHE INSTALLATION
-To install apache, the ubuntu packages must be up to date using the code below usually done inside the terminal.
+To install apache, the ubuntu packages must be up to date. The terminal on my local machine was usedd for all configuration. To update apache, first i had to run this code.
 
 
-`:~$ sudo apt install apache2`
+`:~$ sudo apt update` .
+
+`:~$ sudo apt install apache2` .
 
 
 To check APACHE status from the local machine terminal. use this code:
 
-`:~$ sudo systemctl status apache2 `
+`:~$ sudo systemctl status apache2 ` .
 Figure below shows apache2 is active
 ![status](./images/status.jpg)
 
 To access the website remotely and find the ip address of the server,  I used the code
 
-`:~$ curl -s http://169.254.169.254/latest/meta-data/public-ipv4`
+`:~$ curl -s http://169.254.169.254/latest/meta-data/public-ipv4` .
 
 The ip address was used to launch the website. 
 Screenshot below
@@ -62,12 +64,12 @@ Screenshot below
 The installation of mysql database makes storing and retrieving data seemsless. 
 mySQL is called a relational database simply because the tabular data are structured and have a relationship with each column or row in the data.
 
-To install mySQL, i used this command on the terminal.
+To install mySQL, i used this command 
 
-`:~$ sudo apt install mysql-server`
+`:~$ sudo apt install mysql-server` .
 
 To secure the mySQL, i had to run a security script; which is usually pre-installed with mySQL. This is done to remove some insecure default settings. The script will ensure that insecure access to the Database is prevented. 
-Thee following command was passed into the interactive terminal.
+The following command was passed into the interactive terminal.
 
 `:~$ sudo mysql_secure_installation`
 
@@ -78,57 +80,58 @@ Check if the mySQL is correctly installed.
 
 To navigated into the mySQL databases, I used this command:
 
-`:~$ sudo mysql`
+`:~$ sudo mysql` .
 ![apache](./images/runsql.jpg)
 
 ### PHP INSTALLATION
-To install PHP which serves has the commponent that will process code to display dynamic content to the end user. I installed the php-mysql module to establish a connection between PHP and mySQL-based databases. There is a need to ensure that APACHE can handle PHP file, this is done using libapache2-mod-php module.
+To install PHP which serves has the component that will process code to display dynamic content to the end user. I installed the php-mysql module to establish a connection between PHP and mySQL-based databases. There is a need to ensure that APACHE can handle PHP file, this is done using libapache2-mod-php module. It is actually possible to install the three packages using a single line of code.
 
-It is actually possible to install the three packages using a single line of code.
-`:~$ sudo apt install php libapache2-mod-php php-mysql`
+`:~$ sudo apt install php libapache2-mod-php php-mysql`.
 
 To confirm if the php is installed, i used this code
-`:~$: php -v`
+`:~$: php -v`.
 
-After the installation of LAMP, To provide a virutal host for your website using apache server. The first step is to create a directory to serve documents. By default Apache has a default directory and the setup was not changed. 
+After the installation of LAMP, to provide a virutal host for your website using apache server. The first step is to create a directory to serve documents. By default Apache has a default directory and the setup was not changed. 
 
-I create a directory using the `mkdir` command as follows:
+I created a directory using the `mkdir` command as follows:
 
-`:~$ sudo mkdir /var/www/projectlamp`
+`:~$ sudo mkdir /var/www/projectlamp`.
+
+
 I claimed ownership of this directory by running this command:
 
-`:~$ sudo chown -R $USER:$USER /var/www/projectlamp`
+`:~$ sudo chown -R $USER:$USER /var/www/projectlamp` .
 
-Next, I create an open confguration file in Apache's sites-available directory. 
+Next, I created an open confguration file in Apache's sites-available directory. 
 
-`:~$ sudo vi /etc/apache2/sites-available/projectlamp.conf`
+`:~$ sudo vi /etc/apache2/sites-available/projectlamp.conf`.
 
 ![file](./images/file.jpg)
 
 ### Creating Virtual Configuration
-Apache use a server block to serve documents in html directories. But so that I can configure my own directory, I had to add my own directory without touch the initial configuration in my aws server. I created a directory and claimed the ownership of it. I used these
-commands.
+Apache uses a server block to serve documents in html directories. But in order not to interfere with the inbuilt setting in Apache-aws server. . 
+I created a directory and claimed the ownership of it. I used the following code.
 
-`:~$ sudo mkdir /var/www/projectlamp`
+`:~$ sudo mkdir /var/www/projectlamp`.
 
-`:~$ sudo chown -R $USER:$USER /var/www/projectlamp`
+`:~$ sudo chown -R $USER:$USER /var/www/projectlamp`.
 
-To create a virtual host, so the apache can serve the html requests to a user, I enable a new virtual host using the a2ensite command.
+To create a virtual host, so the apache can serve the html requests to a user, I enabled a new virtual host using the a2ensite command.
 
-`:~$ sudo a2ensite projectlamp` 
+`:~$ sudo a2ensite projectlamp`.
 
-I ensured that the default website installed on Apache Server is deactived, since  I do not use a custom domanin name and Apache default configuration does overwrite the virtual host, if this is not done. To deactivate the website.
+I ensured that the default website installed on Apache Server is deactived, since  I do not own a custom domain name and Apache default configuration does overwrite the virtual host, if this is not done. To deactivate the website, I used this command.
 `:~$ sudo a2dissite 000-default`
 
 To make sure my configuration does not contain syntax errors, I ran this command
 
-`:~$ sudo apache2ctl configtest`
+`:~$ sudo apache2ctl configtest` .
 
-To ascertain the Apache has made the requested changes, I used this command.
+To ascertain that Apache has made the requested changes, I used this command.
 
-`:~$ sudo systemctl reload apache2`
+`:~$ sudo systemctl reload apache2` .
 
-But, notice the webroot folder created is empty. I had to create an index.html file to test run the virtual host to see if it works as expected to do this. I used this command.
+But, notice that the webroot folder created is empty. I had to create an index.html file to test run the virtual host to confirm it works, with this line of code.
 
 `:~$ sudo echo 'Hello LAMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectlamp/index.html`
 
@@ -138,17 +141,17 @@ After, creating html file I ensured that the html was displaying as shown in the
 
 ### PHP INSTALLATION
 
-To install php, the directoryIndedx settings must be changed to allow the index.php file take precedence, i used a text editor such as nano or vim to edit the configuration. I ran this command
+To install php, the directoryIndedx settings must be changed to allow the index.php file take precedence, I used a text editor such as nano or vim to edit the configuration. I ran this command
 
 `:~$ nano /etc/apache2/mods-enabled/dir.conf`
 
 ![filehtml](./images/filehtml.png)
 
-I had to reload apache to effect the changee,using this command:
+I had to reload apache to effect the change,using this command:
 
 `:~$ sudo systemctl reload apache2`
 
-To test that php is correctly installed on the server, I created a new file with php extension in the folder(/var/www/projectlamp) earlier created, and used a text editor such as nano to write a program which gives information about php.
+To test that php is correctly installed on the server, I created a new file with a php extension in the folder(/var/www/projectlamp) earlier created, and used a text editor such as nano to write a program which gives information about php.
 
 ![filehtml](./images/php.png)
 
@@ -159,3 +162,5 @@ To test that php is correctly installed on the server, I created a new file with
 2. For any reason a folder is deleted it can be recovered using testdisk package
 
 3. Recovery of folders introduce disk corruption such as Bad Blocks in file systems.  
+
+4. If you must delete make sure, the data is properly backed up
