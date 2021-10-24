@@ -5,9 +5,9 @@ What is LAMP?
 LAMP stands for L : Linux, A: Apache, M: mySQL, P: PHP.
 
 These aforementiomed components or software allow to build and deliver high performance web applications. How it works?
-The LAMP stack shows how each element depends on each. Let us take an example, suppose a user sends a request to order an item from an-ecommerce store. 
+The LAMP stack shows how each element depends on each. Let us take an example, suppose a user sends a request to order an item from an-ecommerce store. For example,
 
-The process starts off when the Apache web server recieves the requests from the web pages from a typical use's browser. This request is for a PHP file, The Apache server then passes the information to PHP, which then loads the file and executes the code contained the file. 
+The process starts off when the Apache web server recieves the requests from the web pages from a typical use's browser. This request is for a PHP file, The Apache server then passes the information to PHP, which then loads the file and executes the code contained in the file. 
 
 Where does the mySQL come in; this is the database which provides the user all the necessary information about the items they intend to purchase.                               
 
@@ -30,7 +30,8 @@ After setting up ec2 instance, the dashboard was similar to the figure below:
  ![instance](./images/instance.png)
 
  The next step before installing LAMP is to ensure my local machine and the remote server communicate successfully, I had to download the keypair usually attached to the instance of ec2, This allows for easy communication between my local machine and the remote server. This was done using the terminal, the code required is usually in the SSH Client section in the dashboard. 
- During configuration, I noticed that the SSH Client link used to connect the server to my local machine did not work, this was because the default security group earlier created was 
+ During configuration, I noticed that the SSH Client link used to connect the server to my local machine did not work, this was because the default security group earlier created was set to custom, which does not allow a connection between my local machine and ec2 instance created.
+ I had to change the inbound rules from the security section in my aws management console 
 
 
 
@@ -110,4 +111,8 @@ commands.
 
 `sudo chown -R $USER:$USER /var/www/projectlamp`
 
+To create a virtual host, so the apache can serve the html requests to a user, I enable a new virtual host using the a2ensite command.
 
+`sudo a2ensite projectlamp` 
+
+I ensured that the default website installed on Apache Server is deactived, since  I do not use a custom domanin name and Apache default configuration does overrwrite the virtual host. 
