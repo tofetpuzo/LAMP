@@ -33,6 +33,7 @@ After setting up ec2 instance, the dashboard was similar to the figure below:
  During configuration, I noticed that the SSH Client link used to connect the server to my local machine did not work, this was because the default security group earlier created was set to custom, which does not allow a connection between my local machine and ec2 instance created.
  I had to change the inbound rules from the security section in my aws management console 
 
+![inbound](./images/inbound.png)
 
 
 ### APACHE INSTALLATION
@@ -92,14 +93,14 @@ After the installation of LAMP, To provide a virutal host for your website using
 
 I create a directory using the `mkdir` command as follows:
 
-`:$ sudo mkdir /var/www/projectlamp`
+`:~$ sudo mkdir /var/www/projectlamp`
 I claimed ownership of this directory by running this command:
 
-`sudo chown -R $USER:$USER /var/www/projectlamp`
+`:~$ sudo chown -R $USER:$USER /var/www/projectlamp`
 
 Next, I create an open confguration file in Apache's sites-available directory. 
 
-`sudo vi /etc/apache2/sites-available/projectlamp.conf`
+`:~$ sudo vi /etc/apache2/sites-available/projectlamp.conf`
 
 ![file](./images/file.jpg)
 
