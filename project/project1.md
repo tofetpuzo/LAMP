@@ -163,4 +163,4 @@ To test that php is correctly installed on the server, I created a new file with
 
 3. Recovery of folders introduce disk corruption such as Bad Blocks in file systems.  
 
-4. If you must delete make sure, the data is properly backed up
+4. If you must delete make sure, the data is properly backed up.
