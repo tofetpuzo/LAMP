@@ -132,8 +132,30 @@ But, notice the webroot folder created is empty. I had to create an index.html f
 
 `:~$ sudo echo 'Hello LAMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectlamp/index.html`
 
-![file](./images/omainname.jpg)
+![file](./images/omainname(1).jpg)
 
+After, creating html file I ensured that the html was displaying as shown in the screenshot. I then proceed to install PHP
 
+### PHP INSTALLATION
 
+To install php, the directoryIndedx settings must be changed to allow the index.php file take precedence, i used a text editor such as nano or vim to edit the configuration. I ran this command
 
+`:~$ nano /etc/apache2/mods-enabled/dir.conf`
+
+![filehtml](./images/filehtml.png)
+
+I had to reload apache to effect the changee,using this command:
+
+`:~$ sudo systemctl reload apache2`
+
+To test that php is correctly installed on the server, I created a new file with php extension in the folder(/var/www/projectlamp) earlier created, and used a text editor such as nano to write a program which gives information about php.
+
+![filehtml](./images/php.png)
+
+### LESSON LEARNT
+
+1.  Avoid deleting folders such as the ETC Folder.
+
+2. For any reason a folder is deleted it can be recovered using testdisk package
+
+3. Recovery of folders introduce disk corruption such as Bad Blocks in file systems.  
