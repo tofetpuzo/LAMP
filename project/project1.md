@@ -29,13 +29,14 @@ This allows for easily communication between the instance and my local machine.
 After setting up ec2 instance, the dashboard was similar to the figure below:
  ![instance](./images/instance.png)
 
- The next step before installing LAMP is to ensure my local machine and the remote server communicate successfully, I had to download the keypair usually attached to the instance of ec2, This allows for easy communication between my local machine and the remote server. This was done using the terminal, the code required is usually in the SSH Client section in the dashboard. 
+ The next step before installing LAMP is to ensure my local machine and the remote server communicate successfully, I had to download the keypair usually attached to the instance of ec2, This allows for easy communication between my local machine and the remote server. This was done using the terminal, the code required is usually in the SSH Client section in the aws management console dashboard. 
+ 
  During configuration, I noticed that the SSH Client link used to connect the server to my local machine did not work, this was because the default security group earlier created was set to custom, which does not allow a connection between my local machine and ec2 instance created.
  I had to change the inbound rules from the security section in my aws management console 
 
 ![inbound](./images/inbound.png)
 
-
+After the successful configuration of aww ec2 instance with my local terminal, I proceed to installing apache. 
 ### APACHE INSTALLATION
 To install apache, the ubuntu packages must be up to date using the code below usually done inside the terminal.
 
@@ -108,12 +109,31 @@ Next, I create an open confguration file in Apache's sites-available directory.
 Apache use a server block to serve documents in html directories. But so that I can configure my own directory, I had to add my own directory without touch the initial configuration in my aws server. I created a directory and claimed the ownership of it. I used these
 commands.
 
-`sudo mkdir /var/www/projectlamp`
+`:~$ sudo mkdir /var/www/projectlamp`
 
-`sudo chown -R $USER:$USER /var/www/projectlamp`
+`:~$ sudo chown -R $USER:$USER /var/www/projectlamp`
 
 To create a virtual host, so the apache can serve the html requests to a user, I enable a new virtual host using the a2ensite command.
 
-`sudo a2ensite projectlamp` 
+`:~$ sudo a2ensite projectlamp` 
 
-I ensured that the default website installed on Apache Server is deactived, since  I do not use a custom domanin name and Apache default configuration does overrwrite the virtual host. 
+I ensured that the default website installed on Apache Server is deactived, since  I do not use a custom domanin name and Apache default configuration does overwrite the virtual host, if this is not done. To deactivate the website.
+`:~$ sudo a2dissite 000-default`
+
+To make sure my configuration does not contain syntax errors, I ran this command
+
+`:~$ sudo apache2ctl configtest`
+
+To ascertain the Apache has made the requested changes, I used this command.
+
+`:~$ sudo systemctl reload apache2`
+
+But, notice the webroot folder created is empty. I had to create an index.html file to test run the virtual host to see if it works as expected to do this. I used this command.
+
+`:~$ sudo echo 'Hello LAMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectlamp/index.html`
+
+![file](./images/omainname.jpg)
+
+
+
+
