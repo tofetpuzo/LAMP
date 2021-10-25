@@ -32,7 +32,7 @@ After setting up ec2 instance, the dashboard was similar to the figure below:
  The next step before installing LAMP is to ensure my local machine and the remote server communicate successfully, I had to download the keypair usually attached to the instance of ec2, This allows for easy communication between my local machine and the remote server. This was done using the terminal, the code required is usually in the SSH Client section in the aws management console dashboard. 
  
  During configuration, I noticed that the SSH Client link used to connect the server to my local machine did not work, this was because the default security group earlier created was set to custom, which does not allow connection to established between my local machine and ec2 instance created.
- I had to change the inbound rules from the security section in my aws management console 
+ I had to change the inbound rules from the security section in my aws management console. 
 
 ![inbound](./images/inbound.png)
 
