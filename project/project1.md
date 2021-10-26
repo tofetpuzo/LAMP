@@ -49,7 +49,8 @@ To install apache, the ubuntu packages must be up to date. The terminal on my lo
 To check APACHE status from the local machine terminal. use this code:
 
 `:~$ sudo systemctl status apache2 ` .
-Figure below shows apache2 is active
+Figure below shows apache2 is active.
+
 ![status](./images/status.jpg)
 
 To access the website remotely and find the ip address of the server,  I used the code
@@ -58,10 +59,11 @@ To access the website remotely and find the ip address of the server,  I used th
 
 The ip address was used to launch the website. 
 Screenshot below
+
 ![apache](./images/apache_launch.png)
 
 ### MYSQL INSTALLATION
-The installation of mysql database makes storing and retrieving data seemsless. 
+The installation of mysql database makes storing and retrieving data seamless. 
 mySQL is called a relational database simply because the tabular data are structured and have a relationship with each column or row in the data.
 
 To install mySQL, i used this command 
@@ -74,6 +76,8 @@ The following command was passed into the interactive terminal.
 `:~$ sudo mysql_secure_installation`
 
 Secure the mysQL
+
+
 ![secure](./images/secure.jpg)
 
 Check if the mySQL is correctly installed.
@@ -81,6 +85,8 @@ Check if the mySQL is correctly installed.
 To navigated into the mySQL databases, I used this command:
 
 `:~$ sudo mysql` .
+
+
 ![apache](./images/runsql.jpg)
 
 ### PHP INSTALLATION
@@ -89,6 +95,7 @@ To install PHP which serves has the component that will process code to display 
 `:~$ sudo apt install php libapache2-mod-php php-mysql`.
 
 To confirm if the php is installed, i used this code
+
 `:~$: php -v`.
 
 After the installation of LAMP, to provide a virutal host for your website using apache server. The first step is to create a directory to serve documents. By default Apache has a default directory and the setup was not changed. 
@@ -102,9 +109,10 @@ I claimed ownership of this directory by running this command:
 
 `:~$ sudo chown -R $USER:$USER /var/www/projectlamp` .
 
-Next, I created an open confguration file in Apache's sites-available directory. 
+Next, I created an open configuration file in Apache's sites-available directory. 
 
 `:~$ sudo vi /etc/apache2/sites-available/projectlamp.conf`.
+
 
 ![file](./images/file.jpg)
 
@@ -121,6 +129,7 @@ To create a virtual host, so the apache can serve the html requests to a user, I
 `:~$ sudo a2ensite projectlamp`.
 
 I ensured that the default website installed on Apache Server is deactived, since  I do not own a custom domain name and Apache default configuration does overwrite the virtual host, if this is not done. To deactivate the website, I used this command.
+
 `:~$ sudo a2dissite 000-default`
 
 To make sure my configuration does not contain syntax errors, I ran this command
