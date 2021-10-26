@@ -4,10 +4,10 @@
 What is LAMP?
 LAMP stands for L : Linux, A: Apache, M: mySQL, P: PHP.
 
-These aforementiomed components or software allow to build and deliver high performance web applications. How does this work?
-The LAMP stack shows how each element depends on each. Let us take an example, suppose a user sends a request to order an item from an-ecommerce store. 
+These aforementioned components or software allow to build and deliver high performance web applications. How does this work?
+The LAMP stack shows how each element depends on each. Let us take an example, suppose a user sends a request to order an item from an-commerce store. 
 
-The process starts off when the Apache web server recieves the requests from the web pages from a user's browser. This request is for a PHP file, The Apache server then passes the information to PHP, which then loads the file and executes the code contained in the file. 
+The process starts off when the Apache web server receives the requests from the web pages from a user's browser. This request is for a PHP file, The Apache server then passes the information to PHP, which then loads the file and executes the code contained in the file. 
 
 Where does the mySQL come in; this is the database which provides the user all the necessary information about the items they intend to purchase.                               
 
